@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: test-airflow
+  name: test-airflow
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: test-airflow
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: test-airflow
+    spec:
+      containers:
+      - image: apache/airflow:2.0.2
+        name: airflow
+        command: [ "sleep" ]
+        args: [ "infinity" ]
+        resources: {}
+status: {}
